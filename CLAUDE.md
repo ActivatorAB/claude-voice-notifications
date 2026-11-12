@@ -4,7 +4,6 @@ Claude Code-plugin (och marketplace) som spelar röstrepliker per hook-händelse
 
 ## Regler
 
-
 - Lägg aldrig API-nycklar i repot. `tools/generate-lines.sh` läser `ELEVENLABS_API_KEY` från miljön.
 - Höj `version` i `plugins/voice-notifications/.claude-plugin/plugin.json` vid varje ändring som ska nå användare.
 - Kör `claude plugin validate .` före commit.
@@ -15,5 +14,5 @@ Claude Code-plugin (och marketplace) som spelar röstrepliker per hook-händelse
 - `.claude-plugin/marketplace.json`: marketplace med ett plugin
 - `plugins/voice-notifications/hooks/hooks.json`: händelse → kategori
 - `plugins/voice-notifications/scripts/play-sound.sh`: väljer slumpad fil och spelar upp den
-- `plugins/voice-notifications/sounds/<done|input|permission|error>/`: medföljande ljud
-
+- `plugins/voice-notifications/sounds/<done|input|permission|error>/`: medföljande ljud (undantagna från MIT-licensen)
+- `tools/`: klonprov och generering av repliker

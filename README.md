@@ -11,11 +11,9 @@ A Claude Code plugin that plays a voice line when your agent needs you. Differen
 
 Each event picks a random file from its folder, so you can add several lines per event for variety.
 
-> **Private repository.** The bundled voice lines are for personal use by people invited to this repository. Do not redistribute them or make this repository public. See [Bundled sounds](#bundled-sounds).
-
 ## Bundled sounds
 
-
+The plugin ships with eight lines in a starship captain style voice:
 
 | Event | Lines |
 |---|---|
@@ -24,20 +22,18 @@ Each event picks a random file from its folder, so you can add several lines per
 | `permission` | "Requesting authorization to proceed." |
 | `error` | "We've got a problem on deck, Commander." · "Warning. Something needs your attention." |
 
-
+The lines were generated with ElevenLabs Eleven v4. The sound files are **not** covered by the MIT license. They are included for personal use with this plugin. If you redistribute the plugin, leave out `plugins/voice-notifications/sounds/` and use your own sounds.
 
 ## Install
 
 In Claude Code:
 
 ```
-/plugin marketplace add QuBaR/claude-voice-notifications
+/plugin marketplace add ActivatorAB/claude-voice-notifications
 /plugin install voice-notifications@voice-notifications
 ```
 
 Restart Claude Code (or run `/hooks`) so the hooks load.
-
-The repository is private, so you need read access and working GitHub credentials. If `marketplace add` fails, run `gh auth login` (or set up a Git credential helper) and try again.
 
 ## Use your own sounds instead
 

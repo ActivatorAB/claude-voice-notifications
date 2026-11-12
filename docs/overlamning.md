@@ -1,6 +1,6 @@
 # Överlämning: claude-voice-notifications
 
-Senast uppdaterad 2026-11-12. Den här filen beskriver vad projektet är, hur ljuden togs fram, vilka beslut som fattats och vad som återstår. Läs den innan du ändrar något, i synnerhet avsnittet om rättigheter.
+Senast uppdaterad 2026-11-12. Den här filen beskriver vad projektet är, hur ljuden togs fram, vilka beslut som fattats och vad som återstår. Läs den innan du ändrar något, i synnerhet avsnittet om licens.
 
 ## Vad projektet är
 
@@ -25,21 +25,16 @@ Olika ljud per händelse kräver alltså hooks i Claude Code. Konsekvensen är a
 
 Hela kedjan går att köra om med skripten i `tools/`.
 
-
-
-
-
+1. **Klonprov.** Röstklipp slogs ihop till en fil på knappt tre minuter med `tools/build-clone-sample.sh`. Filen laddades upp som Instant Voice Clone i ElevenLabs med voice id `hoFRVuV1dgrWMpMWgZqe`.
+2. **Repliker.** De åtta replikerna genererades med `eleven_v4` och ljudtaggar enligt ElevenLabs best practice. Prompterna finns i `tools/lines.tsv`. Alla filer transkriberades med ElevenLabs Scribe för att kontrollera att inga taggar lästes upp. Fyra alternativa repliker som valdes bort finns kvar lokalt hos Robert.
 
 ElevenLabs-nyckeln står som `ELEVENLABS_API_KEY` i `C:\Users\rober\Repos\Activator.se\tools\podd\.env`. Den ska aldrig in i det här repot.
 
-## Rättigheter (viktigt)
+## Licens
 
-
-
-
-- **MIT-licensen gäller bara koden.** README:n undantar uttryckligen ljudfilerna.
-- **Delning sker bara till inbjudna personer** för privat bruk. Det bryter fortfarande mot ElevenLabs villkor, så håll kretsen liten.
-- **Ska pluginet bli publikt:** ta bort `sounds/` helt (även ur git-historiken) eller generera om replikerna med Roberts egen Professional Voice Clone (`DZvzq2c6zaa8bX0U5ehb`) via `tools/generate-lines.sh`.
+- **Repot är publikt** under ActivatorAB sedan 2026-11-12.
+- **MIT-licensen gäller bara koden.** README:n undantar uttryckligen ljudfilerna i `sounds/`.
+- **Egna repliker:** generera om dem med Roberts Professional Voice Clone (`DZvzq2c6zaa8bX0U5ehb`) via `tools/generate-lines.sh`.
 
 ## Status hos Robert
 
@@ -48,7 +43,7 @@ ElevenLabs-nyckeln står som `ELEVENLABS_API_KEY` i `C:\Users\rober\Repos\Activa
 - Orcas egna hooks i `settings.json` är orörda.
 - Robert kör med `bypassPermissions`, så tillståndsljudet hörs sällan. Det spelas främst när en plan ska godkännas.
 - "Klar"-ljudet är bekräftat live 2026-11-12 i en ny session efter plugininstallationen.
-
+- Orcas notiser är avstängda (`notifications.enabled: false` i `%APPDATA%\orca\profiles\local-default\profile-state.db`), så ljudet hörs inte dubbelt. `customSoundPath` används om notiserna slås på igen.
 
 ## Så gör du vanliga ändringar
 
@@ -64,19 +59,8 @@ Lyssna igenom eller transkribera filerna innan du committar.
 
 **Släppa en ny version:** höj `version` i `plugins/voice-notifications/.claude-plugin/plugin.json`, kör `claude plugin validate .`, committa och pusha. Användare uppdaterar med `/plugin marketplace update voice-notifications`.
 
-**Bygga om extraheringsverktyget:**
-
-```bash
-
-
-dotnet build -c Release
-
-
-```
-
 ## Öppna punkter
 
-- **Bjuda in mottagare** till repot via GitHub (Settings → Collaborators) eller med `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`.
 - **`idle_prompt` är medvetet utelämnad.** Den triggas en minut efter varje avslutad tur och skulle upprepa "input"-ljudet efter "klar"-ljudet.
 - **Kräver bash.** På Windows utan Git Bash fungerar inte hookarna. Lös med `"shell": "powershell"` och ett PowerShell-skript om det blir aktuellt.
-- **Publik variant** med Roberts egen röst är inte gjord.
+- **Repliker med Roberts egen röst** är inte gjorda.

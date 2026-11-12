@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Joins extracted voice files into one normalized MP3 for ElevenLabs voice cloning.
+# Joins voice clips into one normalized MP3 for ElevenLabs voice cloning.
 # Usage: tools/build-clone-sample.sh <folder with .ogg files> <glob> <out.mp3>
-
+# Example: tools/build-clone-sample.sh ~/recordings "*.ogg" sample.mp3
 set -euo pipefail
 src="$1"; pattern="$2"; out="$3"
 tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
