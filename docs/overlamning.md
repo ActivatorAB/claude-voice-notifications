@@ -17,7 +17,7 @@ Alla hooks är `async`, så Claude väntar aldrig på ljudet. Repot fungerar sam
 
 ## Varför hooks och inte Orca
 
-Det började som ett önskemål om egna ljud i Orca. Orca har dock bara en egen ljudfil (`customSoundPath`), och den gäller alla notiser: klar, behöver input och terminalklocka. Det kontrollerades i Orcas källkod (`app.asar`). Orca spelar `.ogg`, `.mp3`, `.wav`, `.m4a`, `.aac` och `.flac`.
+Det började som ett önskemål om egna ljud i Orca. Orca har dock bara en egen ljudfil (`customSoundPath`). Den gäller alla notiser: klar, behöver input och terminalklocka. Det kontrollerades i Orcas källkod (`app.asar`). Orca spelar `.ogg`, `.mp3`, `.wav`, `.m4a`, `.aac` och `.flac`.
 
 Olika ljud per händelse kräver alltså hooks i Claude Code. Konsekvensen är att det bara gäller Claude-agenter. Codex i Orca påverkas inte. Orcas eget notisljud bör stängas av, annars hörs båda.
 
@@ -58,7 +58,7 @@ ElevenLabs-nyckeln står som `ELEVENLABS_API_KEY` i `C:\Users\rober\Repos\Activa
 ELEVENLABS_API_KEY=... tools/generate-lines.sh hoFRVuV1dgrWMpMWgZqe
 ```
 
-Lyssna, eller transkribera, innan du committar.
+Lyssna igenom eller transkribera filerna innan du committar.
 
 **Släppa en ny version:** höj `version` i `plugins/voice-notifications/.claude-plugin/plugin.json`, kör `claude plugin validate .`, committa och pusha. Användare uppdaterar med `/plugin marketplace update voice-notifications`.
 
@@ -74,7 +74,7 @@ dotnet build -c Release
 
 ## Öppna punkter
 
-- **Bjuda in mottagare** till repot (GitHub, Settings → Collaborators, eller `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`).
+- **Bjuda in mottagare** till repot via GitHub (Settings → Collaborators) eller med `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`).
 - **Stänga av Orcas notisljud** om det inte redan är gjort.
 - **Hookarna har inte observerats live** i en ny session efter plugininstallationen. Skriptet är testat direkt (ffplay och PowerShell-reserv). Bekräfta att ett "klar"-ljud hörs efter omstart av Claude Code.
 - **`idle_prompt` är medvetet utelämnad.** Den triggas en minut efter varje avslutad tur och skulle upprepa "input"-ljudet efter "klar"-ljudet.
