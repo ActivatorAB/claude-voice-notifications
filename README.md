@@ -22,7 +22,7 @@ The plugin ships with eight lines in a starship captain style voice:
 | `permission` | "Requesting authorization to proceed." |
 | `error` | "We've got a problem on deck, Commander." · "Warning. Something needs your attention." |
 
-The lines were generated with ElevenLabs Eleven v4. The sound files are **not** covered by the MIT license. They are included for personal use with this plugin. If you redistribute the plugin, leave out `plugins/voice-notifications/sounds/` and use your own sounds.
+The lines were generated with ElevenLabs Eleven v4. The sound files are **not** covered by the MIT license. If you redistribute the plugin, leave out `plugins/voice-notifications/sounds/` and use your own sounds.
 
 ## Install
 
