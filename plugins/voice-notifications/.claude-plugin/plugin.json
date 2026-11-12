@@ -1,8 +1,8 @@
 {
   "name": "voice-notifications",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plays a voice line when Claude finishes, asks a question, needs permission or hits an error.",
-  "author": { "name": "Robert Jansz", "url": "https://github.com/QuBaR" },
+  "author": { "name": "claude-voice-notifications contributors" },
   "license": "MIT",
   "keywords": ["hooks", "notifications", "sound", "voice"]
 }

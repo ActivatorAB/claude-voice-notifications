@@ -1,18 +1,18 @@
 # claude-voice-notifications
 
-Claude Code-plugin (och marketplace) som spelar röstrepliker per hook-händelse. Läs `docs/overlamning.md` innan du ändrar något.
+Claude Code plugin (and marketplace) that plays voice lines per hook event. Read `docs/development.md` before you change anything.
 
-## Regler
+## Rules
 
-- Lägg aldrig API-nycklar i repot. `tools/generate-lines.sh` läser `ELEVENLABS_API_KEY` från miljön.
-- Höj `version` i `plugins/voice-notifications/.claude-plugin/plugin.json` vid varje ändring som ska nå användare.
-- Kör `claude plugin validate .` före commit.
-- Skript ska ha LF-radslut (styrs av `.gitattributes`), annars går de inte att köra på macOS och Linux.
+- Never commit API keys. `tools/generate-lines.sh` reads `ELEVENLABS_API_KEY` from the environment.
+- Bump `version` in `plugins/voice-notifications/.claude-plugin/plugin.json` for every change that should reach users.
+- Run `claude plugin validate .` before committing.
+- Scripts must use LF line endings (enforced by `.gitattributes`), otherwise they will not run on macOS and Linux.
 
-## Struktur
+## Structure
 
-- `.claude-plugin/marketplace.json`: marketplace med ett plugin
-- `plugins/voice-notifications/hooks/hooks.json`: händelse → kategori
-- `plugins/voice-notifications/scripts/play-sound.sh`: väljer slumpad fil och spelar upp den
-- `plugins/voice-notifications/sounds/<done|input|permission|error>/`: medföljande ljud (undantagna från MIT-licensen)
-- `tools/`: klonprov och generering av repliker
+- `.claude-plugin/marketplace.json`: marketplace with one plugin
+- `plugins/voice-notifications/hooks/hooks.json`: event → category
+- `plugins/voice-notifications/scripts/play-sound.sh`: picks a random file and plays it
+- `plugins/voice-notifications/sounds/<done|input|permission|error>/`: bundled sounds (excluded from the MIT license)
+- `tools/`: clone sample builder and voice line generator

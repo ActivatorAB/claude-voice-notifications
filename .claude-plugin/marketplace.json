@@ -2,8 +2,7 @@
   "name": "voice-notifications",
   "description": "Voice line notifications for Claude Code: different sounds when Claude is done, asks a question, needs permission or hits an error.",
   "owner": {
-    "name": "Robert Jansz",
-    "url": "https://github.com/ActivatorAB"
+    "name": "claude-voice-notifications contributors"
   },
   "plugins": [
     {

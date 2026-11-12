@@ -83,11 +83,13 @@ Only use voices you have the right to use. Do not clone a real person's voice wi
 
 ## Tips
 
-- **Using Orca or another tool that plays its own notification sound?** Turn that sound off, or you will hear both.
+- **Does your terminal or agent manager play its own notification sound?** Turn that sound off, or you will hear both.
 - **Running with `bypassPermissions`?** You will rarely hear the `permission` sound, since Claude seldom asks.
 - **Turn it off temporarily** with `/plugin disable voice-notifications`.
 
 ## How it works
+
+See [docs/development.md](docs/development.md) for design notes and how to regenerate the bundled sounds.
 
 `hooks/hooks.json` registers async hooks on `Stop`, `StopFailure`, `Notification` and `PreToolUse`. Each hook runs `scripts/play-sound.sh <event>`, which picks a random file and plays it in the background. Claude never waits for the sound.
 
