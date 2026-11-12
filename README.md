@@ -1,0 +1,102 @@
+# Claude Voice Notifications
+
+A Claude Code plugin that plays a voice line when your agent needs you. Different events get different sounds, so you know what happened without looking at the screen.
+
+| Event | When it plays | Sound folder |
+|---|---|---|
+| `done` | Claude finished its turn | `done/` |
+| `input` | Claude asks you a question (`AskUserQuestion`) or an MCP server needs input | `input/` |
+| `permission` | Claude needs permission to run a tool, or wants a plan approved | `permission/` |
+| `error` | The turn stopped because of an API error | `error/` |
+
+Each event picks a random file from its folder, so you can add several lines per event for variety.
+
+> **Private repository.** The bundled voice lines are for personal use by people invited to this repository. Do not redistribute them or make this repository public. See [Bundled sounds](#bundled-sounds).
+
+## Bundled sounds
+
+
+
+| Event | Lines |
+|---|---|
+| `done` | "Task complete, Commander. Awaiting new orders." · "Mission accomplished. Standing by." · "Code deployed. All systems nominal." · "The job's done. Ready for the next one." |
+| `input` | "Bridge to Commander. Your input is required." |
+| `permission` | "Requesting authorization to proceed." |
+| `error` | "We've got a problem on deck, Commander." · "Warning. Something needs your attention." |
+
+
+
+## Install
+
+In Claude Code:
+
+```
+/plugin marketplace add QuBaR/claude-voice-notifications
+/plugin install voice-notifications@voice-notifications
+```
+
+Restart Claude Code (or run `/hooks`) so the hooks load.
+
+The repository is private, so you need read access and working GitHub credentials. If `marketplace add` fails, run `gh auth login` (or set up a Git credential helper) and try again.
+
+## Use your own sounds instead
+
+Put `.mp3`, `.wav` or `.ogg` files in these folders:
+
+```
+~/.claude/voice-notifications/done/
+~/.claude/voice-notifications/input/
+~/.claude/voice-notifications/permission/
+~/.claude/voice-notifications/error/
+```
+
+On Windows that is `C:\Users\<you>\.claude\voice-notifications\`.
+
+The plugin looks for sounds in this order and uses the first folder that has files in it:
+
+1. `$CLAUDE_VOICE_NOTIFICATIONS_DIR/<event>`, if you set that environment variable
+2. `~/.claude/voice-notifications/<event>`
+3. The sounds bundled with the plugin
+
+Your own folders survive plugin updates. An empty event plays nothing.
+
+### Make your own voice lines
+
+Any text-to-speech tool works. With ElevenLabs Eleven v4 short lines with audio tags work well:
+
+```
+[calm, confident naval captain] Task complete, Commander... [short pause] Awaiting new orders.
+[radio-transmission tone] Bridge to Commander... [short pause] Your input is required.
+[formal] Requesting authorization to proceed.
+[concerned, urgent] We've got a problem on deck, Commander.
+```
+
+Keep each line around 2 to 4 seconds. Longer lines get annoying after the fiftieth task.
+
+Only use voices you have the right to use. Do not clone a real person's voice without their consent.
+
+## Requirements
+
+- Claude Code with plugin support
+- `bash` (on Windows, Git Bash, which Claude Code uses anyway)
+- One audio player. The script tries them in this order:
+  - `ffplay` (part of FFmpeg, works everywhere)
+  - `afplay` (built into macOS)
+  - `paplay` or `mpg123` (Linux)
+  - PowerShell's media player (built into Windows, no install needed)
+
+## Tips
+
+- **Using Orca or another tool that plays its own notification sound?** Turn that sound off, or you will hear both.
+- **Running with `bypassPermissions`?** You will rarely hear the `permission` sound, since Claude seldom asks.
+- **Turn it off temporarily** with `/plugin disable voice-notifications`.
+
+## How it works
+
+`hooks/hooks.json` registers async hooks on `Stop`, `StopFailure`, `Notification` and `PreToolUse`. Each hook runs `scripts/play-sound.sh <event>`, which picks a random file and plays it in the background. Claude never waits for the sound.
+
+## License
+
+The code (scripts, hooks and manifests) is MIT licensed, see [LICENSE](LICENSE).
+
+The files in `plugins/voice-notifications/sounds/` are excluded from the MIT license. See [Bundled sounds](#bundled-sounds).

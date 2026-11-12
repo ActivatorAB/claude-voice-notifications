@@ -1,0 +1,15 @@
+{
+  "name": "voice-notifications",
+  "description": "Voice line notifications for Claude Code: different sounds when Claude is done, asks a question, needs permission or hits an error.",
+  "owner": {
+    "name": "Robert Jansz",
+    "url": "https://github.com/QuBaR"
+  },
+  "plugins": [
+    {
+      "name": "voice-notifications",
+      "source": "./plugins/voice-notifications",
+      "description": "Plays a voice line when Claude finishes, asks a question, needs permission or hits an error."
+    }
+  ]
+}
