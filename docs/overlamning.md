@@ -49,6 +49,7 @@ ElevenLabs-nyckeln står som `ELEVENLABS_API_KEY` i `C:\Users\rober\Repos\Activa
 - Robert kör med `bypassPermissions`, så tillståndsljudet hörs sällan. Det spelas främst när en plan ska godkännas.
 - "Klar"-ljudet är bekräftat live 2026-11-12 i en ny session efter plugininstallationen.
 
+
 ## Så gör du vanliga ändringar
 
 **Byta eller lägga till ljud för en användare:** lägg filer i `~/.claude/voice-notifications/<event>/`. Den mappen går före de medföljande ljuden och överlever uppdateringar. `CLAUDE_VOICE_NOTIFICATIONS_DIR` går före båda.
@@ -76,7 +77,6 @@ dotnet build -c Release
 ## Öppna punkter
 
 - **Bjuda in mottagare** till repot via GitHub (Settings → Collaborators) eller med `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`.
-- **Stänga av Orcas notisljud** om det inte redan är gjort.
 - **`idle_prompt` är medvetet utelämnad.** Den triggas en minut efter varje avslutad tur och skulle upprepa "input"-ljudet efter "klar"-ljudet.
 - **Kräver bash.** På Windows utan Git Bash fungerar inte hookarna. Lös med `"shell": "powershell"` och ett PowerShell-skript om det blir aktuellt.
 - **Publik variant** med Roberts egen röst är inte gjord.
