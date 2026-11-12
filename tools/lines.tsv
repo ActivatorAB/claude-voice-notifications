@@ -1,0 +1,9 @@
+# event	filename	ElevenLabs v4 prompt
+done	task-complete	[calm, confident naval captain] Task complete, Commander... [short pause] Awaiting new orders.
+done	mission-accomplished	[professional] Mission accomplished. [short pause] Standing by.
+done	code-deployed	[calm, satisfied] Code deployed... [short pause] All systems nominal.
+done	the-jobs-done	[warm, gruff] The job's done. [short pause] Ready for the next one.
+input	input-required	[radio-transmission tone] Bridge to Commander... [short pause] Your input is required.
+permission	requesting-authorization	[formal] Requesting authorization to proceed.
+error	problem-on-deck	[concerned, urgent] We've got a problem on deck, Commander.
+error	warning	[serious] Warning. [short pause] Something needs your attention.
