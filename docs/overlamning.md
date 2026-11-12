@@ -74,7 +74,7 @@ dotnet build -c Release
 
 ## Öppna punkter
 
-- **Bjuda in mottagare** till repot via GitHub (Settings → Collaborators) eller med `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`).
+- **Bjuda in mottagare** till repot via GitHub (Settings → Collaborators) eller med `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`.
 - **Stänga av Orcas notisljud** om det inte redan är gjort.
 - **Hookarna har inte observerats live** i en ny session efter plugininstallationen. Skriptet är testat direkt (ffplay och PowerShell-reserv). Bekräfta att ett "klar"-ljud hörs efter omstart av Claude Code.
 - **`idle_prompt` är medvetet utelämnad.** Den triggas en minut efter varje avslutad tur och skulle upprepa "input"-ljudet efter "klar"-ljudet.
