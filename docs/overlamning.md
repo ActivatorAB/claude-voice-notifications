@@ -47,6 +47,7 @@ ElevenLabs-nyckeln står som `ELEVENLABS_API_KEY` i `C:\Users\rober\Repos\Activa
 - De tidigare hookarna i `~/.claude/settings.json` och skriptet `~/.claude/hooks/play-sound.sh` är borttagna. En kopia av inställningarna från innan finns i `~/.claude/settings.json.bak-ljud`.
 - Orcas egna hooks i `settings.json` är orörda.
 - Robert kör med `bypassPermissions`, så tillståndsljudet hörs sällan. Det spelas främst när en plan ska godkännas.
+- "Klar"-ljudet är bekräftat live 2026-11-12 i en ny session efter plugininstallationen.
 
 ## Så gör du vanliga ändringar
 
@@ -76,7 +77,6 @@ dotnet build -c Release
 
 - **Bjuda in mottagare** till repot via GitHub (Settings → Collaborators) eller med `gh api -X PUT repos/QuBaR/claude-voice-notifications/collaborators/<användare>`.
 - **Stänga av Orcas notisljud** om det inte redan är gjort.
-- **Hookarna har inte observerats live** i en ny session efter plugininstallationen. Skriptet är testat direkt (ffplay och PowerShell-reserv). Bekräfta att ett "klar"-ljud hörs efter omstart av Claude Code.
 - **`idle_prompt` är medvetet utelämnad.** Den triggas en minut efter varje avslutad tur och skulle upprepa "input"-ljudet efter "klar"-ljudet.
 - **Kräver bash.** På Windows utan Git Bash fungerar inte hookarna. Lös med `"shell": "powershell"` och ett PowerShell-skript om det blir aktuellt.
 - **Publik variant** med Roberts egen röst är inte gjord.
